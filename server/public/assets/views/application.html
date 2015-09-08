@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" ng-app="statsApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>curling statistics</title>
+        <link rel="stylesheet" href="/assets/styles/style.css">
+        <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
+        <script type="text/javascript" src="/vendors/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-material/angular-material.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-aria/angular-aria.min.js"></script>
+        <script type="text/javascript" src="/assets/scripts/stats.min.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/statcontroller.min.js"></script>
+        <link rel="stylesheet" href="/vendors/angular-material/angular-material.min.css"/>
+    </head>
+
+    <body>
+
+
+    <div layout="column" ng-controller="AppController">
+        <md-toolbar layout="row">
+            <h1>Curling App Name</h1>
+        </md-toolbar>
+        <md-content class="md-padding" ng-hide="gameInfo">
+            <h3>Enter game information</h3>
+
+            <form ng-submit="submit()">
+                <div layout="row">
+                    <div layout="column" flex="50">
+                        <md-input-container class="md-icon-float">
+                            <label>Event</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.name" type="text">
+                        </md-input-container>
+                        <md-input-container class="md-icon-float">
+                            <label>Team</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.team" type="text">
+                        </md-input-container>
+                        <md-input-container class="md-icon-float">
+                            <label>Game #</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.game">
+                        </md-input-container>
+                        <md-input-container class="md-icon-float">
+                            <label>Opponent</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.opponent">
+                        </md-input-container>
+                    </div>
+                    <div layout="column" flex="50">
+                        <md-input-container class="md-icon-float">
+                            <label>Lead</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.lead" type="text">
+                        </md-input-container>
+                        <md-input-container class="md-icon-float">
+                            <label>Second</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.second" type="text">
+                        </md-input-container>
+                        <md-input-container class="md-icon-float">
+                            <label>Vice</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.third" type="text">
+                        </md-input-container>
+                        <md-input-container class="md-icon-float">
+                            <label>Skip</label>
+                            <md-icon md-svg-src="img/icons/ic_person-24px.svg" class="event"></md-icon>
+                            <input ng-model="event.skip" type="text">
+                        </md-input-container>
+                        <input type="submit" value="submit">
+                    </div>
+                </div>
+            </form>
+
+        </md-content>
+        <div>
+            <main ng-view></main>
+        </div>
+
+
+
+    </div>
+
+
+    </body>
+</html>
+

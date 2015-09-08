@@ -1,0 +1,52 @@
+<!--<div ng-include src="'/assets/views/routes/nav.html'">-->
+    <!--<p>Hey</p>-->
+        <!--</md-content>-->
+    <!--</div>-->
+<!--</div>-->
+
+<md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+            <md-icon aria-label="menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+        </md-button>
+        <h1 class="header"><em>CurlStat</em></h1>
+    </div>
+</md-toolbar>
+<div layout="row" flex>
+    <md-sidenav layout="column" flex="10" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+
+        <ul>
+            <li class="nav"><a href="#home">Home</a></li>
+            <li class="nav"><a href="#about">About</a></li>
+            <li class="nav"><a href="#contact">Contact</a></li>
+            <li class="nav"><a href="#login">Login</a></li>
+            <li class="nav"><a href="#register">Register</a></li>
+            <li class="nav"><a href="#approute">Stat App</a></li>
+
+        </ul>
+    </md-sidenav>
+    <md-content class="content">
+        <h1><img src="/assets/styles/photos/world_curl.png" display="inline" style="width:50px;height:50px"/><small>Contact Info</small></h1>
+        <p>If you'd like to contact Ryan click the email link, otherwise drop a message with your email below </p>
+        <a href="mailto:bruntrd@gmail.com"><img src="assets/styles/photos/gmail.png" class="img-rounded" style="width:30px;height:30px" id="gmail"></a>
+
+
+        <md-subheader class="md-primary">Drop a message</md-subheader>
+        <form id="messageForm">
+
+            <md-input-container class="md-icon-float">
+                <label>Name</label>
+                <ng-md-icon icon="timer_auto" size="16px" class="event"></ng-md-icon>
+                <input type="text">
+            </md-input-container>
+            <br>
+            <md-input-container class="md-icon-float">
+                <label>Enter a short message and contact info</label>
+                <ng-md-icon icon="mms" size="16px" class="event"></ng-md-icon>
+                <input type="text">
+            </md-input-container>
+
+            <input type="submit">
+        </form>
+    </md-content>
+</div>

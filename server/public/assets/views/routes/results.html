@@ -1,0 +1,39 @@
+<div ng-include src="'/assets/views/routes/header.html'"></div>
+<div layout="column">
+    <md-content id="test" class="md-padding">
+        <!--<md-tabs md-dynamic-height md-border-bottom>-->
+        <div layout="row">
+
+            <div layout="column" flex="50">
+                <h3>Lead</h3>
+                <canvas id="leadBar" class="chart chart-bar" chart-data="leadData" chart-labels="labels">
+
+                </canvas>
+            </div>
+            <div layout="column" flex="50">
+                <h3>Second</h3>
+                <canvas id="secondBar" class="chart chart-bar" chart-data="secondData" chart-labels="labels">
+
+                </canvas>
+            </div>
+        </div>
+        <div layout="row">
+            <div layout="column" flex="50">
+                <h3>Third</h3>
+                <canvas id="thirdBar" class="chart chart-bar" chart-data="thirdData" chart-labels="labels">
+
+                </canvas>
+            </div>
+            <div layout="column" flex="50">
+                <h3>Skip</h3>
+                <canvas id="skipBar" class="chart chart-bar" chart-data="skipData" chart-labels="labels">
+
+                </canvas>
+            </div>
+        </div>
+
+
+
+
+    </md-content>
+</div>

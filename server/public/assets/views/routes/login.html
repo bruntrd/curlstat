@@ -1,0 +1,39 @@
+<md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+            <md-icon aria-label="menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+        </md-button>
+        <h1 class="header"><em>CurlStat</em></h1>
+    </div>
+</md-toolbar>
+<div layout="row" flex>
+    <md-sidenav layout="column" flex="10" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+
+        <ul>
+            <li class="nav"><a href="#home">Home</a></li>
+            <li class="nav"><a href="#about">About</a></li>
+            <li class="nav"><a href="#contact">Contact</a></li>
+            <li class="nav"><a href="#login">Login</a></li>
+            <li class="nav"><a href="#register">Register</a></li>
+            <li class="nav"><a href="#approute">Stat App</a></li>
+
+
+        </ul>
+    </md-sidenav>
+    <md-content class="content" layout="column" flex="60">
+        <h1><img src="/assets/styles/photos/world_curl.png" display="inline" style="width:50px;height:50px"/><small>Login</small></h1>
+        <form id="registerForm">
+            <md-input-container class="md-icon-float">
+                <label>User Name</label>
+                <ng-md-icon icon="account_box" size="16px" class="event"></ng-md-icon>
+                <input ng-model="user.userName">
+            </md-input-container>
+            <md-input-container class="md-icon-float">
+                <label>Password</label>
+                <ng-md-icon icon="lock" size="16px" class="event"></ng-md-icon>
+                <input ng-model="user.password">
+            </md-input-container>
+            <input type="submit" value="Login">
+        </form>
+    </md-content>
+</div>

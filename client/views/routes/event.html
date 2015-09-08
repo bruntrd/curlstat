@@ -1,0 +1,166 @@
+<div ng-include src="'/assets/views/routes/header.html'"></div>
+
+
+<div layout="column" ng-controller="AppController">
+    <md-content class="md-padding" ng-hide="gameInfo">
+        <h1><img src="/assets/styles/photos/world_curl.png" display="inline" style="width:50px;height:50px"/><small>Enter Game Info</small></h1>
+
+        <br>
+        <form ng-submit="submitGameInfo()">
+            <div layout="row">
+                <div layout="column" flex="50">
+                    <md-input-container class="md-icon-float">
+                        <label>Event</label>
+                        <ng-md-icon icon="language" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="event.name" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-icon-float">
+                        <label>Team</label>
+                        <ng-md-icon icon="group_add" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="event.team" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-icon-float">
+                        <label>Game #</label>
+                        <ng-md-icon icon="public" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="event.game">
+                    </md-input-container>
+                    <md-input-container class="md-icon-float">
+                        <label>Opponent</label>
+                        <ng-md-icon icon="group_add" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="event.opponent">
+                    </md-input-container>
+                </div>
+
+                <div layout="column" flex="50">
+
+                    <md-input-container class="md-icon-float">
+                        <label>Lead</label>
+                        <ng-md-icon icon="person_add" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="team.lead" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-icon-float">
+                        <label>Second</label>
+                        <ng-md-icon icon="person_add" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="team.second" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-icon-float">
+                        <label>Third</label>
+                        <ng-md-icon icon="person_add" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="team.third" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-icon-float">
+                        <label>Skip</label>
+                        <ng-md-icon icon="person_add" size="16px" class="event"></ng-md-icon>
+                        <input ng-model="team.skip" type="text">
+                    </md-input-container>
+                    <input type="submit" value="Start Game" class="submitButtons">
+                </div>
+            </div>
+        </form>
+
+    </md-content>
+    <div layout="row" id="statPage" ng-show="gameInfo">
+        <div layout="column" flex="30" id="house">
+            <img data-drop="true" jqyoui-droppable src="http://www.curlingclub.net/xinrockstat/images/curling-sheet-reverse.jpg"/>
+        </div>
+        <div layout="column" flex="5" jqyoui-droppable data-drop="true">
+            <span id="redRock1" data-drag="true" data-drop="true" jqyoui-droppable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="redRock2" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="redRock3" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="redRock4" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="redRock5" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="redRock6" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="redRock7" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="redRock8" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/red_rock.png" class="rocks"></span>
+            <span id="yellowRock1" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+            <span id="yellowRock2" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+            <span id="yellowRock3" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+            <span id="yellowRock4" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+            <span id="yellowRock5" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+            <span id="yellowRock6" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+            <span id="yellowRock7" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+            <span id="yellowRock8" data-drag="true" data-drop="true" jqyoui-draggable data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable  ><img src="assets/styles/photos/yellow_rock.png" class="rocks"></span>
+        </div>
+
+        <div layout="column" flex="60">
+            <div layout="row">
+            <md-content>
+                <h1><small>{{event.name}} - {{event.team}} vs {{event.opponent}} - Game {{event.game}}</small></h1>
+                <md-button class="md-warn" ng-click="submitGameInfo()">edit</md-button>
+                <h2><small>{{currentPlayer}} is throwing shot {{shot}} of end {{end}}</small> </h2><br>
+            </md-content>
+            </div>
+            <form ng-submit="addScore(currentShot.score, currentPlayer, shot);getPlayer(shot,team);reset()">
+            <div layout="row">
+
+                <div layout="column" flex="50">
+
+
+                        <p>Shot: {{currentShot.type}}</p>
+                        <md-radio-group ng-model="currentShot.type">
+                            <md-radio-button value="hit" class="md-primary">take-out</md-radio-button>
+                            <md-radio-button value="draw" class="md-primary">draw</md-radio-button>
+                        </md-radio-group>
+                        <p>Turn: {{currentShot.turn}}</p>
+                        <md-radio-group ng-model="currentShot.turn">
+                            <md-radio-button value="in" class="md-primary">in</md-radio-button>
+                            <md-radio-button value="out" class="md-primary">out</md-radio-button>
+                        </md-radio-group>
+                        <p>Area on Ice: {{currentShot.area}}</p>
+                        <md-radio-group ng-model="currentShot.area">
+                            <md-radio-button value="left" class="md-primary">left</md-radio-button>
+                            <md-radio-button value="center" class="md-primary">center</md-radio-button>
+                            <md-radio-button value="right" class="md-primary">right</md-radio-button>
+                        </md-radio-group>
+                        <p>Open/Precise: {{currentShot.difficulty}}</p>
+                        <md-radio-group ng-model="currentShot.difficulty">
+                            <md-radio-button value="precise" class="md-primary">precise</md-radio-button>
+                            <md-radio-button value="open" class="md-primary">open</md-radio-button>
+                        </md-radio-group>
+
+
+
+
+
+                </div>
+
+                <div layout="column" flex="50">
+                    <p>Score: {{currentShot.score}}/5</p>
+                    <md-radio-group ng-model="currentShot.score">
+                        <md-radio-button value=0 class="md-primary">0</md-radio-button>
+                        <md-radio-button value=1 class="md-primary">1</md-radio-button>
+                        <md-radio-button value=2 class="md-primary">2</md-radio-button>
+                        <md-radio-button value=3 class="md-primary">3</md-radio-button>
+                        <md-radio-button value=4 class="md-primary">4</md-radio-button>
+                        <md-radio-button value=5 class="md-primary">5</md-radio-button>
+                    </md-radio-group>
+                    <p>Shot Comments:</p><br>
+                    <textarea placeholder="comments" rows="4" cols="40"></textarea><br>
+                    <input type="submit" value="submit shot" class="submitButtons">
+                    <!--<p id="currentShot">Current Shot: {{currentShot.difficulty}} {{currentShot.turn}} turn {{currentShot.type}} on the {{currentShot.area}} of the sheet </p>-->
+                    <!--<p>You gave it a score of: {{currentShot.score}}/5</p>-->
+
+                </div>
+
+            </div>
+            </form>
+            <div>
+                <br><br><br>
+                <md-button class="md-warn" ng-click="endGame()">Game Over?</md-button>
+            </div>
+            <div ng-show="results">
+                <md-content>
+                    <md-button class="md-raised md-warn" href="#results">End Game</md-button>
+                </md-content>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
