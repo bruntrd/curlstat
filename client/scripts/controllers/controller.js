@@ -1,28 +1,79 @@
 var myApp= angular.module('myApp');
 
 
-myApp.controller('HomeController', ['$scope', function($scope){
+myApp.controller('HomeController', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
     console.log('home controller');
+    $scope.toggleSidenav = function(left){
+        $mdSidenav(left).toggle();
+    }
+
 }]);
 
-myApp.controller('ContactController', ['$scope', function($scope){
-    console.log('contract controller');
+myApp.controller('ContactController', ['$scope', '$http', '$mdSidenav','$mdDialog', function($scope,$http,$mdSidenav,$mdDialog){
+    console.log('contact controller');
+    $scope.greeting ="whatchya got to say?";
+    $scope.contact ={
+        person:"",
+        message:""
+    };
+    $scope.messages =[];
+    //getMessages();
+    $scope.toggleSidenav = function(left){
+        $mdSidenav(left).toggle();
+    };
+    $scope.default = angular.copy($scope.contact);
+    $scope.getMessages = function(){
+        $http.get('/messages').
+            then(function(res){
+                console.log(res.data);
+                $scope.messages=res.data;
+                console.log($scope.messages);
+            });
+
+    };
+
+    $scope.addMessage = function(contact){
+        console.log(contact);
+        $http.post('/messages',contact).
+            then(console.log("its been sent"));;
+        $scope.getMessages();
+    };
+
+    $scope.reset = function(){
+
+        $scope.contact=angular.copy($scope.default);
+
+    };
+    $scope.getMessages();
+
+
 }]);
+
 
 myApp.controller('AboutController', ['$scope', function($scope){
     console.log('about controller');
+    $scope.toggleSidenav = function(left){
+        $mdSidenav(left).toggle();
+    }
 }]);
 
 myApp.controller('ApprouteController',['$scope', function($scope){
     console.log('app route controller');
 }]);
 
+
 myApp.controller('LoginController',['$scope', function($scope){
     console.log('login controller');
+    $scope.toggleSidenav = function(left){
+        $mdSidenav(left).toggle();
+    }
 }]);
 
 myApp.controller('RegisterController',['$scope', function($scope){
     console.log('register controller');
+    $scope.toggleSidenav = function(left){
+        $mdSidenav(left).toggle();
+    }
     $scope.user={
         firstName:"",
         lastName:"",
@@ -217,31 +268,34 @@ myApp.controller('ResultsController',['$scope', 'SetArrays', 'CalcPercentage', f
     $scope.thirdOut = SetArrays.thirdOut;
     $scope.skipOut = SetArrays.skipOut;
     $scope.leadData = [
-        [CalcPercentage.findAvg(SetArrays.leadOverall),CalcPercentage.findAvg(SetArrays.leadHits),CalcPercentage.findAvg(SetArrays.leadDraws),CalcPercentage.findAvg(SetArrays.leadIn),CalcPercentage.findAvg(SetArrays.leadOut)],
-        [91,91,91,93,87]
+        CalcPercentage.findAvg(SetArrays.leadOverall),CalcPercentage.findAvg(SetArrays.leadHits),CalcPercentage.findAvg(SetArrays.leadDraws),CalcPercentage.findAvg(SetArrays.leadIn),CalcPercentage.findAvg(SetArrays.leadOut)
     ];
     $scope.secondData = [
-        [CalcPercentage.findAvg(SetArrays.secondOverall),CalcPercentage.findAvg(SetArrays.secondHits),CalcPercentage.findAvg(SetArrays.secondDraws),CalcPercentage.findAvg(SetArrays.secondIn),CalcPercentage.findAvg(SetArrays.secondOut)],
-        [88,88,88,90,86]
-
+        CalcPercentage.findAvg(SetArrays.secondOverall),CalcPercentage.findAvg(SetArrays.secondHits),CalcPercentage.findAvg(SetArrays.secondDraws),CalcPercentage.findAvg(SetArrays.secondIn),CalcPercentage.findAvg(SetArrays.secondOut)
     ];
     $scope.thirdData = [
-        [CalcPercentage.findAvg(SetArrays.thirdOverall),CalcPercentage.findAvg(SetArrays.thirdHits),CalcPercentage.findAvg(SetArrays.thirdDraws),CalcPercentage.findAvg(SetArrays.thirdIn),CalcPercentage.findAvg(SetArrays.thirdOut)],
-        [86,86,86,88,84]
-
+        CalcPercentage.findAvg(SetArrays.thirdOverall),CalcPercentage.findAvg(SetArrays.thirdHits),CalcPercentage.findAvg(SetArrays.thirdDraws),CalcPercentage.findAvg(SetArrays.thirdIn),CalcPercentage.findAvg(SetArrays.thirdOut)
     ];
     $scope.skipData = [
-        [CalcPercentage.findAvg(SetArrays.skipOverall),CalcPercentage.findAvg(SetArrays.skipHits),CalcPercentage.findAvg(SetArrays.skipDraws),CalcPercentage.findAvg(SetArrays.skipIn),CalcPercentage.findAvg(SetArrays.skipOut)],
-        [84,84,84,84,84]
-
+        CalcPercentage.findAvg(SetArrays.skipOverall),CalcPercentage.findAvg(SetArrays.skipHits),CalcPercentage.findAvg(SetArrays.skipDraws),CalcPercentage.findAvg(SetArrays.skipIn),CalcPercentage.findAvg(SetArrays.skipOut)
+    ];
+    $scope.leadChart =[
+        $scope.leadData,
+        [91,93,87,91,91]
+    ];
+    $scope.secondChart =[
+        $scope.leadData,
+        [91,93,87,91,91]
+    ];
+    $scope.thirdChart =[
+        $scope.leadData,
+        [91,93,87,91,91]
+    ];
+    $scope.skipChart =[
+        $scope.leadData,
+        [91,93,87,91,91]
     ];
 
-
-
-    $scope.someData =[
-        [80,90,60,50,85],
-        [90,90,90,90,90]
-    ];
     $scope.series = ['Current Game','Goal'];
     $scope.labels = ['Total', 'In-Turn', 'Out-Turn', 'Draws', 'Hits'];
     var leadBarEl = angular.element(document.getElementById("leadBar"));
@@ -252,22 +306,23 @@ myApp.controller('ResultsController',['$scope', 'SetArrays', 'CalcPercentage', f
     var ctx = leadBarEl[0].getContext("2d");
     var leadBarEl = angular.element(document.getElementById("skipBar"));
     var ctx = leadBarEl[0].getContext("2d");
-    //var leadBarChart = new Chart(ctx).Bar($scope.someData);
 
+    console.log($scope.leadChart);
+    console.log($scope.secondChart);
+    console.log($scope.thirdChart);
+    console.log($scope.skipChart);
 
+    //$scope.sendStats = function(){
+    //    $scope.teamStats = {
+    //        lead: $scope.leadData,
+    //        second: $scope.secondData,
+    //        third: $scope.thirdData,
+    //        skip: $scope.skipData
+    //    }
+    //    console.log($scope.teamStats);
+    //    $http.post('/add',$scope.teamStats)
+    //};
 
-    //console.log($scope.avg);
-    console.log($scope.leadData);
-    console.log($scope.secondData);
-    console.log($scope.thirdData);
-    console.log($scope.skipData);
-
-
-
-
-    //console.log($scope.leadOverall,$scope.leadIn,$scope.leadOut,$scope.leadDraws,$scope.leadHits);
-    //$scope.leadData = [CalcPercentage.findAvg(SetArrays.leadOverall),CalcPercentage.findAvg(SetArrays.leadIn),CalcPercentage.findAvg(SetArrays.leadOut),CalcPercentage.findAvg(SetArrays.leadDraws),CalcPercentage.findAvg(SetArrays.leadHits)];
-    //console.log($scope.leadData);
 
 
 
@@ -277,7 +332,7 @@ myApp.controller('ResultsController',['$scope', 'SetArrays', 'CalcPercentage', f
 myApp.factory('SetValues', function(){
     var leadOverall = null;
 
-})
+});
 
 myApp.factory('SetArrays', function(){
     var leadOverall =[];
@@ -333,15 +388,19 @@ myApp.factory('SetArrays', function(){
 myApp.factory('CalcPercentage',function(){
 
 
-    var findAvg = function(array){
+    var findAvg = function(array) {
         var sum = 0;
         var avg = 0;
-
-        for (var i = 0; i<array.length; i++){
-            sum = sum+array[i];
+        if (array.length) {
+            for (var i = 0; i < array.length; i++) {
+                sum = sum + array[i];
+            }
+            avg = sum / array.length;
+            return avg;
         }
-        avg= sum/array.length;
-        return avg;
+        else {
+            return 0;
+        }
     }
 
     return {
@@ -350,4 +409,5 @@ myApp.factory('CalcPercentage',function(){
 
 
 });
+
 

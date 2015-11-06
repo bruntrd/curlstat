@@ -53,3 +53,40 @@ body {
     border-radius: 0px;
     /*color: white;*/
 }
+
+#sendMessage {
+    position: relative;
+    padding: 5px 10px;
+    margin: 0px 10px 10px 0px;
+    float: left;
+    border-radius: 10px;
+    font-family: 'Helvetica', cursive;
+    font-size: 14px;
+    color: #FFF;
+    text-decoration: none;
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+}
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+#messageButton {
+    height: 40px;
+    width: 200px;
+
+}
+
+#messageList {
+    height: 300px;
+    overflow-y: scroll;
+}

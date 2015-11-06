@@ -3,7 +3,6 @@
         <!--</md-content>-->
     <!--</div>-->
 <!--</div>-->
-
 <md-toolbar layout="row">
     <div class="md-toolbar-tools">
         <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
@@ -12,41 +11,88 @@
         <h1 class="header"><em>CurlStat</em></h1>
     </div>
 </md-toolbar>
-<div layout="row" flex>
-    <md-sidenav layout="column" flex="10" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+<div layout="row" flex="auto">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" flex="10">
 
-        <ul>
-            <li class="nav"><a href="#home">Home</a></li>
-            <li class="nav"><a href="#about">About</a></li>
-            <li class="nav"><a href="#contact">Contact</a></li>
-            <li class="nav"><a href="#login">Login</a></li>
-            <li class="nav"><a href="#register">Register</a></li>
-            <li class="nav"><a href="#approute">Stat App</a></li>
+            <ul>
+                <li class="nav"><a href="#home">Home</a></li>
+                <li class="nav"><a href="#about">About</a></li>
+                <li class="nav"><a href="#contact">Contact</a></li>
+                <li class="nav"><a href="#login">Login</a></li>
+                <li class="nav"><a href="#register">Register</a></li>
+                <li class="nav"><a href="#approute">Stat App</a></li>
 
-        </ul>
+            </ul>
     </md-sidenav>
-    <md-content class="content">
+    <md-content class="content" flex="auto">
+
+
         <h1><img src="/assets/styles/photos/world_curl.png" display="inline" style="width:50px;height:50px"/><small>Contact Info</small></h1>
-        <p>If you'd like to contact Ryan click the email link, otherwise drop a message with your email below </p>
-        <a href="mailto:bruntrd@gmail.com"><img src="assets/styles/photos/gmail.png" class="img-rounded" style="width:30px;height:30px" id="gmail"></a>
+            <!--<div class="row">-->
+                <!--<a href="mailto:bruntrd@gmail.com"><img src="assets/styles/photos/gmail.png" class="img-rounded" style="width:30px;height:30px" id="gmail"></a>-->
+                <!-- Button trigger modal -->
+            <p>Drop a message for Ryan with some contact info and he'll get back to you</p>
+            <button id="messageButton" class="btn btn-primary" width="40px" data-toggle="modal" data-target="#myModalHorizontal">Send Message</button>
+
+                <!--</div>-->
 
 
-        <md-subheader class="md-primary">Drop a message</md-subheader>
-        <form id="messageForm">
+            <!-- Modal -->
+            <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">ç
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Messager man</h4>
+                        </div>
 
-            <md-input-container class="md-icon-float">
-                <label>Name</label>
-                <ng-md-icon icon="timer_auto" size="16px" class="event"></ng-md-icon>
-                <input type="text">
-            </md-input-container>
-            <br>
-            <md-input-container class="md-icon-float">
-                <label>Enter a short message and contact info</label>
-                <ng-md-icon icon="mms" size="16px" class="event"></ng-md-icon>
-                <input type="text">
-            </md-input-container>
+                        <!-- Modal Body -->
+                        <div class="modal-body">
 
-            <input type="submit">
-        </form>
+                            <form class="form-horizontal" role="form" id="messageForm">
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input ng-model="contact.person" type="text" placeholder="Name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Message</label>
+                                    <div class="col-sm-10">
+                                        <input id="messageContainer"  maxlength="150" ng-model="contact.message"  type="text" class="form-control" placeholder="message"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Forget this
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-click ="addMessage(contact)" data-dismiss="modal">
+                                Sending it
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-list id="messageList">
+                <md-list-item class="md-3-line" ng-repeat="item in messages">
+                    <div class="md-list-item-text">
+                        <!--<h3>{{greeting}}</h3>-->
+                        <h4>{{messages[$index].person}}</h4>
+                        <p>{{messages[$index].message}}</p>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+
     </md-content>
+
+
 </div>

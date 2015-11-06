@@ -20,6 +20,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'node_modules',
                 src: [
+                    "angular/angular.js",
                     "angular/angular.min.js",
                     "angular/angular.min.js.map"
                 ],
@@ -39,7 +40,7 @@ module.exports = function(grunt) {
                 cwd: 'node_modules',
                 src: [
                     'angular-animate/angular-animate.min.js',
-                    'angular-animate/angular-animate.min.js.map',
+                    'angular-animate/angular-animate.min.js.map'
                 ],
                 "dest": 'server/public/vendors'
             },
@@ -60,6 +61,15 @@ module.exports = function(grunt) {
                     "angular-route/angular-route.min.js.map"
                 ],
                 "dest": "server/public/vendors/"
+            },
+            bootstrapjs:{
+                expand: true,
+                cwd: 'node_modules',
+                src: [
+                    'bootstrap/dist/js/bootstrap.js',
+                    'bootstrap/dist/js/bootstrap.min.js'
+                ],
+                "dest": 'server/public/vendors'
             },
             angularCharts: {
                 expand: true,
@@ -113,6 +123,12 @@ module.exports = function(grunt) {
                 cwd: "client",
                 src: "views/index.html",
                 dest: "server/public/assets/"
+            },
+            htmlDialogs: {
+                expand: true,
+                cwd: "client",
+                src: "views/dialogs/message.tmpl.html",
+                dest: "server/public/assets"
             },
             htmlRoutes: {
                 expand: true,
