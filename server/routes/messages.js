@@ -12,7 +12,6 @@ router.post('/', function(req,res,next){
         res.send("yes");
     });
   console.log("post hit", req.body);
-
 });
 
 router.get('/', function(req,res,next){

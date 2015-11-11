@@ -35,7 +35,7 @@ myApp.controller('ContactController', ['$scope', '$http', '$mdSidenav','$mdDialo
     $scope.addMessage = function(contact){
         console.log(contact);
         $http.post('/messages',contact).
-            then(console.log("its been sent"));;
+            then(console.log("its been sent"));
         $scope.getMessages();
     };
 
@@ -245,7 +245,7 @@ myApp.controller('AppController',['$scope','SetArrays', function($scope,SetArray
     }
 }]);
 
-myApp.controller('ResultsController',['$scope', 'SetArrays', 'CalcPercentage', function($scope, SetArrays,CalcPercentage){
+myApp.controller('ResultsController',['$scope','$http','SetArrays', 'CalcPercentage', function($scope,$http,SetArrays,CalcPercentage){
     console.log('results controller');
     $scope.leadOverall = SetArrays.leadOverall;
     $scope.secondOverall = SetArrays.secondOverall;
@@ -311,17 +311,18 @@ myApp.controller('ResultsController',['$scope', 'SetArrays', 'CalcPercentage', f
     console.log($scope.secondChart);
     console.log($scope.thirdChart);
     console.log($scope.skipChart);
+    $scope.teamStats = {
+        lead: $scope.leadData,
+        second: $scope.secondData,
+        third: $scope.thirdData,
+        skip: $scope.skipData
+    };
 
-    //$scope.sendStats = function(){
-    //    $scope.teamStats = {
-    //        lead: $scope.leadData,
-    //        second: $scope.secondData,
-    //        third: $scope.thirdData,
-    //        skip: $scope.skipData
-    //    }
-    //    console.log($scope.teamStats);
-    //    $http.post('/add',$scope.teamStats)
-    //};
+    $scope.sendStats = function(stats){
+        console.log("these are the team stats " + stats);
+        $http.post('/stats', stats).
+            then(console.log("Yo we sent it!"));
+    };
 
 
 
@@ -391,7 +392,7 @@ myApp.factory('CalcPercentage',function(){
     var findAvg = function(array) {
         var sum = 0;
         var avg = 0;
-        if (array.length) {
+        if (array.length>0) {
             for (var i = 0; i < array.length; i++) {
                 sum = sum + array[i];
             }

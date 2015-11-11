@@ -4,6 +4,7 @@ var app = express();
 var index= require('./routes/index');
 var messages = require('./routes/messages');
 var mongoose = require('mongoose');
+var stats = require('./routes/stats');
 
 mongoose.connect('mongodb://localhost/Personal_Project');
 
@@ -16,6 +17,7 @@ app.listen(app.get('port'),function(){
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({expanded:true}));
+app.use('/stats', stats);
 app.use('/messages', messages);
 app.use('/', index);
 

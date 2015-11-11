@@ -8,7 +8,6 @@
 
         <script type="text/javascript" src="/vendors/jquery/dist/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        <!--<script type="text/javascript" src="/vendors/jquery-ui/jquery-ui.js"></script>-->
         <script type="text/javascript" src="/vendors/angular/angular.min.js"></script>
         <script type="text/javascript" src="/vendors/angular-route/angular-route.min.js"></script>
         <script type="text/javascript" src="/vendors/angular-material/angular-material.min.js"></script>
@@ -20,16 +19,14 @@
         <script type="text/javascript" src="/assets/scripts/app.min.js"></script>
         <script type="text/javascript" src="/assets/scripts/controllers/controller.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-
-
         <link rel="stylesheet" href="/vendors/angular-material/angular-material.min.css"/>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.5.0/angular-material-icons.min.js"></script>
-
         <link rel="stylesheet" href="/vendors/angular-chart.js/dist/angular-chart.css.map"/>
+        <script type="text/javascript" src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     </head>
 
     <body>
-        <div id="wrapper">
+        <div id="wrapper" id="popupContainer">
             <md-content layout="column" flex class="md-padding" id="content">
                 <div>
                     <main ng-view></main>
